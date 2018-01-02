@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Insert title here</title>
+	</h:head>
+	<h:body>
+		<h:form>			
+			<h:panelGrid columns="3">
+				Numero Inteiro:
+				<h:inputText id="inteiro" value="#{form.numeroInteiro}" />
+				<h:message for="inteiro" showDetail="false" showSummary="true"></h:message>
+				Numero Decimal:
+				<h:inputText value="#{form.numeroDecimal}" >
+					<f:convertNumber locale="pt_BR"></f:convertNumber>
+				</h:inputText>
+				<h:message for="inteiro" ></h:message>
+				
+				Caractere: 
+				<h:inputText value="#{form.caractere}" />
+				<h:message for="inteiro" ></h:message>
+				
+				Data:
+				<h:inputText value="#{form.data}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+				<h:message for="inteiro" ></h:message>
+				
+				Opcao:
+				<h:inputText value="#{form.opcao}" converterMessage="Opção deve ser um valor entre OPC_1 e OPC_2" />
+				<h:message for="inteiro"></h:message>
+				
+				<h:commandButton value="processar" action="#{form.processar}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</html>

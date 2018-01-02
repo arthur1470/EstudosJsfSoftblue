@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Validation</title>
+	</h:head>
+	<h:body>
+		
+		<h:form>
+			<h:panelGrid columns="3">
+				
+				Nome:
+				<h:inputText value="#{validation.nome}" id="nome" validator="#{validation.validarInicial}">						
+					<f:validateRequired />
+					<f:validateLength minimum="4" maximum="30" />				
+				</h:inputText>				
+				<h:message for="nome" />
+				
+				Idade:
+				<h:inputText value="#{validation.idade}" id="idade" required="true">
+					<f:validateLongRange minimum="18" maximum="100" />
+				</h:inputText>				
+				<h:message for="idade" />
+				
+				<h:commandButton action="#{validation.processar}" value="PROCESSAR"/>
+			</h:panelGrid>
+		</h:form>
+		
+		<br />
+		
+		<h:form>
+			<h:panelGrid columns="3">
+				Data:
+				<h:inputText value="#{data.data}" id="data"	>
+					<f:convertDateTime pattern="dd/MM/yy" />
+					<f:validator validatorId="dateValidator" />
+				</h:inputText>
+				<h:message for="data" />
+				
+				<h:commandButton action="#{data.processar}" value="PROCESSAR" />
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</html>
